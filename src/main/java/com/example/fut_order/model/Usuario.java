@@ -3,6 +3,7 @@ package com.example.fut_order.model;
 import com.example.fut_order.model.enums.TipoPapel;
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -27,6 +28,9 @@ public class Usuario {
     @Enumerated(EnumType.STRING)
     @Column(name = "papel", nullable = false)
     private TipoPapel papel;
+
+    @OneToMany(mappedBy = "usuario")
+    private List<Pedido> pedidos;
 
     // Construtor vazio exigido pelo JPA
     public Usuario() {
