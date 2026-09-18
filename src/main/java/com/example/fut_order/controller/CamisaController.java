@@ -39,7 +39,7 @@ public class CamisaController {
         return ResponseEntity.ok(camisaResponseDTO);
     }
 
-    @PutMapping("/{id}")
+    @PatchMapping("/{id}")
     public ResponseEntity<CamisaResponseDTO> atualizarCamisa(@PathVariable Long id, @RequestBody @Valid CamisaUpdateDTO dto){
         CamisaResponseDTO camisaResponseDTO = camisaService.atualizarCamisa(id, dto);
         return ResponseEntity.ok(camisaResponseDTO);

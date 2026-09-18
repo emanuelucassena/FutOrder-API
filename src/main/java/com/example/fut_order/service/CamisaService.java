@@ -47,7 +47,21 @@ public class CamisaService {
 
     public CamisaResponseDTO atualizarCamisa (Long id, CamisaUpdateDTO camisaUpdateDTO){
         Camisa camisa = camisaRepository.findById(id).orElseThrow(() -> new CamisaNaoEncontradaException(id));
-        BeanUtils.copyProperties(camisaUpdateDTO, camisa);
+        if(camisaUpdateDTO.time() != null){
+            camisa.setTime(camisaUpdateDTO.time());
+        }
+        if (camisaUpdateDTO.temporada() != null){
+            camisa.setTemporada(camisaUpdateDTO.temporada());
+        }
+        if (camisaUpdateDTO.versao() != null){
+            camisa.setVersao(camisaUpdateDTO.versao());
+        }
+        if (camisaUpdateDTO.precoBase() != null){
+            camisa.setPrecoBase(camisaUpdateDTO.precoBase());
+        }
+        if (camisaUpdateDTO.qtdEstoque() != null){
+            camisa.setQtdEstoque(camisaUpdateDTO.qtdEstoque());
+        }
         camisaRepository.save(camisa);
         return new CamisaResponseDTO(camisa);
     }
