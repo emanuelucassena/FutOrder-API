@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 @Service
 public class CamisaService {
 
-    private CamisaRepository camisaRepository;
+    private final CamisaRepository camisaRepository;
 
     public CamisaService(CamisaRepository camisaRepository){
         this.camisaRepository = camisaRepository;

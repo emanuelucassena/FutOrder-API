@@ -49,4 +49,20 @@ public class GlobalExceptionHandler {
         problemDetail.setTitle("Erro de Validação");
         return problemDetail;
     }
+
+    @ExceptionHandler(UsuarioNaoEncontradoException.class)
+    public ProblemDetail handleUsuarioNaoEncontrado(UsuarioNaoEncontradoException ex){
+        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(
+                HttpStatus.NOT_FOUND, ex.getMessage());
+        problemDetail.setTitle("Usuário não encontrado");
+        return problemDetail;
+    }
+
+    @ExceptionHandler(UsuarioJaCadastradoException.class)
+    public ProblemDetail handleUsuarioJaCadastrado(UsuarioJaCadastradoException ex){
+        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(
+                HttpStatus.CONFLICT, ex.getMessage());
+        problemDetail.setTitle("Usuário já cadastrado");
+        return problemDetail;
+    }
 }
